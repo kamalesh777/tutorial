@@ -1,19 +1,33 @@
 import React, { useState } from 'react'
 
 const Home = () => {
-  const [count, setCount] = useState(10);
-  /**
-   * count = current or updated value
-   * setCount = it is a function to update the count state
-   * useState = it takes a initial value
-   */
+    const [newItem, setNewItem] = useState('');
 
+  const [list, setList] = useState(['Apple', 'Orange'])
+
+  const addItem = (e) => {
+    const itemValue = e.target.value
+    setNewItem(itemValue);
+  }
+  const addItemHandler = () => {
+     setList([...list, newItem]);
+     setNewItem('');
+  }
   return (
-    <React.Fragment style={{}}>
-      <h2>Count Number: {count}</h2>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <button onClick={() => setCount(count - 1)}>Decrement</button>
-    </React.Fragment>
+    <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <h1>Todo List</h1>
+      <div className="d-flex">
+        <input type="text" onChange={addItem} value={newItem} />
+        <button type="button" onClick={addItemHandler}>
+          Add
+        </button>
+      </div>
+      <ul>
+        {list.map((currentValue) => (
+          <li>{currentValue}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
