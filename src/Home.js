@@ -9,8 +9,9 @@ const Home = () => {
    */
 
   return (
-    <React.Fragment style={{}}>
+    <React.Fragment>
       <h2>Count Number: {count}</h2>
+      <input type="text" />
       <button onClick={() => setCount(count + 1)}>Increment</button>
       <button onClick={() => setCount(count - 1)}>Decrement</button>
     </React.Fragment>
